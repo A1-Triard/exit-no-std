@@ -7,6 +7,7 @@ pub fn exit(code: u8) -> ! {
     unsafe { winapi::um::processthreadsapi::ExitProcess(
         code as winapi::shared::minwindef::UINT
     ); }
+    #[allow(clippy::empty_loop)]
     loop { }
 }
 
