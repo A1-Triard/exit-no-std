@@ -1,14 +1,12 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+#[cfg(windows)]
+pub fn exit(code: u8) -> ! {
+    unsafe { winapi::um::processthreadsapi::ExitProcess(
+        code as winapi::shared::minwindef::UINT
+    ); }
+    loop { }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+#[cfg(not(windows))]
+pub fn exit(code: u8) -> ! {
+    unsafe { libc::exit(code as u16 as i16 as libc::c_int) }
 }
