@@ -1,3 +1,7 @@
+#![deny(warnings)]
+
+#![no_std]
+
 #[cfg(windows)]
 pub fn exit(code: u8) -> ! {
     unsafe { winapi::um::processthreadsapi::ExitProcess(

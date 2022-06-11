@@ -1,10 +1,22 @@
 [package]
+edition = "2021"
 name = "exit-no-std"
 version = "0.1.0"
-edition = "2021"
+rust-version = "1.59"
+authors = ["warlock <internalmike@gmail.com>"]
+description = "Cross-platform interface to the process exit function."
+readme = "README.md"
+documentation = "https://docs.rs/exit-no-std/"
+keywords = ["errno", "no_std", "unix", "windows", "linux"]
+categories = ["os", "no-std"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/A1-Triard/exit-no-std"
 
 [target.'cfg(not(windows))'.dependencies]
 libc = { version = "0.2.126", default-features = false }
 
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3.9", features = ["processthreadsapi"] }
+
+[badges]
+maintenance = { status = "actively-developed" }
