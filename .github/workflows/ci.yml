@@ -17,12 +17,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        rust: ["1.59", stable, beta, nightly]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions-rs/toolchain@v1
       with:
-        toolchain: ${{ matrix.rust }}
+        toolchain: nightly
         override: true
     - run: "rustup component add clippy"
     - uses: actions/checkout@v2

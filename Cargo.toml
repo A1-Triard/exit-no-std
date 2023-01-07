@@ -1,8 +1,8 @@
 [package]
 edition = "2021"
 name = "exit-no-std"
-version = "0.1.4"
-rust-version = "1.59"
+version = "0.2.0"
+#rust-version = "nightly"
 authors = ["warlock <internalmike@gmail.com>"]
 description = "Cross-platform interface to the process exit function."
 readme = "README.md"
@@ -13,7 +13,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/A1-Triard/exit-no-std"
 
 [target.'cfg(target_os="dos")'.dependencies]
-pc-ints = "0.2.0"
+pc-ints = "0.3.0"
 
 [target.'cfg(all(not(target_os="dos"), not(windows)))'.dependencies]
 libc = { version = "0.2.126", default-features = false }
