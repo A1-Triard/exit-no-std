@@ -12,7 +12,7 @@ use exit_no_std::exit;
 extern { }
 
 #[panic_handler]
-pub extern fn panic(_info: &PanicInfo) -> ! {
+fn panic(_info: &PanicInfo) -> ! {
     exit(99)
 }
 
