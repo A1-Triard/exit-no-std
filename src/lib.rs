@@ -3,7 +3,7 @@
 #![no_std]
 
 /// Terminates the current process with the specified exit code.
-#[cfg(target_os="dos")]
+#[cfg(dos)]
 pub fn exit(code: u8) -> ! {
     pc_ints::int_21h_ah_4Ch_exit(code);
     #[allow(clippy::empty_loop)]
@@ -11,7 +11,7 @@ pub fn exit(code: u8) -> ! {
 }
 
 /// Terminates the current process with the specified exit code.
-#[cfg(all(not(target_os="dos"), windows))]
+#[cfg(all(not(dos), windows))]
 pub fn exit(code: u8) -> ! {
     unsafe { winapi::um::processthreadsapi::ExitProcess(
         code as winapi::shared::minwindef::UINT
@@ -21,7 +21,7 @@ pub fn exit(code: u8) -> ! {
 }
 
 /// Terminates the current process with the specified exit code.
-#[cfg(all(not(target_os="dos"), not(windows)))]
+#[cfg(all(not(dos), not(windows)))]
 pub fn exit(code: u8) -> ! {
     unsafe { libc::exit(code as u16 as i16 as libc::c_int) }
 }
